@@ -1,0 +1,277 @@
+# General
+  #font pango:Cantarell 12
+  font pango:Open Sans 10
+  set $mod Mod4
+
+
+# GAPS
+
+  smart_gaps on
+  gaps inner 8
+  gaps outer 2
+
+
+# System mode
+  set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+  mode "$mode_system" {
+    bindsym l exec --no-startup-id i3-exit lock, mode "default"
+    bindsym e exec --no-startup-id i3-exit logout, mode "default"
+    bindsym s exec --no-startup-id i3-exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3-exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3-exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  bindsym $mod+Escape mode "$mode_system"
+
+
+# Resize mode
+  mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  bindsym $mod+r mode "resize"
+
+
+# Workspace-relared bindings
+  set $ws1 1
+  set $ws2 2
+  set $ws3 3
+  set $ws4 4
+  set $ws5 5
+  set $ws6 6
+  set $ws7 7
+  set $ws8 8
+  set $ws9 9
+  set $ws0 10
+
+  # use tab to switch workspaces
+  workspace_auto_back_and_forth yes
+  bindsym $mod+Tab workspace back_and_forth
+
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+0 workspace $ws0
+
+  # move focused container to workspace
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
+  bindsym $mod+Shift+0 move container to workspace $ws0
+
+
+# Window-Related bindings
+  bindsym $mod+Shift+q kill
+
+  # Use Mouse+$mod to drag floating windows to their wanted position
+  floating_modifier $mod
+
+  # change focus
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+
+  # alternatively, you can use the cursor keys:
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Up focus up
+  bindsym $mod+Right focus right
+
+  # move focused window
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+j move down
+  bindsym $mod+Shift+k move up
+  bindsym $mod+Shift+l move right
+
+  # alternatively, you can use the cursor keys:
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Up move up
+  bindsym $mod+Shift+Right move right
+
+  # split in horizontal orientation
+  bindsym $mod+g split h
+
+  # split in vertical orientation
+  bindsym $mod+v split v
+
+  # enter fullscreen mode for the focused container
+  bindsym $mod+f fullscreen toggle
+
+  # change container layout (stacked, tabbed, toggle split)
+  bindsym $mod+s layout stacking
+  bindsym $mod+w layout tabbed
+  bindsym $mod+e layout toggle split
+
+  # toggle tiling / floating
+  bindsym $mod+Shift+space floating toggle
+
+  # change focus between tiling / floating windows
+  bindsym $mod+space focus mode_toggle
+
+  # focus the parent container
+  bindsym $mod+a focus parent
+
+  # focus the child container
+  #bindsym $mod+d focus child
+
+  for_window [class="^.*"] border pixel 0
+  for_window [tiling] border pixel 1
+
+  #for_window [class=".*"] border pixel 0
+
+  for_window [window_role="pop-up"] floating enable
+  for_window [class="Lxappearance"] floating enable
+
+
+# Assign programs with workspace
+  assign [class="jetbrains-idea-ce"]        $ws2
+  assign [class="Firefox"]                  $ws3
+  assign [class="Org.gnome.Nautilus"]       $ws4
+  assign [class="TelegramDesktop"]          $ws0
+  assign [class="KeePassXC"]                $ws0
+
+
+# Scratchpad
+  bindsym $mod+Shift+grave move scratchpad
+  bindsym $mod+grave scratchpad show
+
+
+# Restart
+  # reload the configuration file
+  bindsym $mod+Shift+c reload
+  # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+  bindsym $mod+Shift+r restart
+
+
+# Exit i3
+  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# Style
+  set_from_resource $base00 i3wm_00 #ffffff
+  set_from_resource $base01 i3wm_01 #ffffff
+  set_from_resource $base02 i3wm_02 #ffffff
+  set_from_resource $base03 i3wm_03 #ffffff
+  set_from_resource $base04 i3wm_04 #ffffff
+  set_from_resource $base05 i3wm_05 #ffffff
+  set_from_resource $base06 i3wm_06 #ffffff
+  set_from_resource $base07 i3wm_07 #ffffff
+  set_from_resource $base08 i3wm_08 #ffffff
+  set_from_resource $base09 i3wm_09 #ffffff
+  set_from_resource $base0A i3wm_0A #ffffff
+  set_from_resource $base0B i3wm_0B #ffffff
+  set_from_resource $base0C i3wm_0C #ffffff
+  set_from_resource $base0D i3wm_0D #ffffff
+  set_from_resource $base0E i3wm_0E #ffffff
+  set_from_resource $base0F i3wm_0F #ffffff
+
+  client.focused          $base05 $base0D $base00 $base0D $base0C
+  client.focused_inactive $base01 $base01 $base05 $base03 $base01
+  client.unfocused        $base01 $base00 $base05 $base01 $base01
+  client.urgent           $base08 $base08 $base00 $base08 $base08
+  client.placeholder      $base00 $base00 $base05 $base00 $base00
+  client.background       $base07
+
+
+# Bar
+  bar {
+    status_command          i3blocks -c $HOME/.config/i3/blocks.conf
+    position                bottom
+    wheel_up_cmd            nop
+    wheel_down_cmd          nop
+
+    colors {
+        background $base00
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base00 $base00 $base0D
+        active_workspace    $base00 $base05 $base03
+        inactive_workspace  $base00 $base00 $base01
+        urgent_workspace    $base00 $base00 $base08
+        binding_mode        $base00 $base00 $base0A
+    }
+  }
+
+
+# Launcher
+  bindsym $mod+d exec i3-runner
+  bindsym $mod+b exec firefox
+
+
+# Volume Control
+  bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute
+  bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
+  bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+
+
+# Increase brightness
+  bindsym XF86MonBrightnessUp exec light -A 5
+  bindsym XF86MonBrightnessDown exec light -U 5
+
+
+# Terminal
+  bindsym $mod+Return exec i3-sensible-terminal
+
+
+# File Manager
+  bindsym $mod+t exec urxvt -e ranger
+
+
+# ScreenShot
+  bindsym --release $mod+p exec maim ~/Documents/Pictures/$(date +%s).png
+
+
+#bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
+
+# background
+  exec --no-startup-id nitrogen --restore
+# network
+  exec --no-startup-id nm-applet
+# power manager
+  exec xfce4-power-manager
+# keyboard layouts
+  exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
+# audio
+  exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
+
+
+# compton
+  exec --no-startup-id compton
+# red light
+  exec --no-startup-id redshift
+  #exec --no-startup-id pasystray
+
+  #https://github.com/Maato/volumeicon
+
+# other
+  exec telegram-desktop
+  exec keepassxc

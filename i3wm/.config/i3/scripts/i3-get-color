@@ -1,0 +1,6 @@
+#!/bin/bash
+get_color() {
+  echo "$(xrdb -query -all | grep $1 | awk '{print $2}')"
+}
+
+get_color $1

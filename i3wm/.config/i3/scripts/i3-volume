@@ -1,0 +1,10 @@
+#!/bin/bash
+info=$(amixer sget Master | grep 'Right' | awk -F'[][]' '{ print $4; print $2 }')
+is_mute=$( echo $info | awk -F' ' '{ print $1 }')
+volume=$( echo $info | awk -F' ' '{ print $2 }')
+
+if [ $is_mute = "off" ]; then
+  echo ""
+else
+  echo " "
+fi
