@@ -4,7 +4,7 @@ B='#00000000'  # blank
 C='#00000000'  # clear ish
 
 # ring color
-D="$(i3-get-color i3wm_0D)ff"
+D="$(i3-get-color i3wm_0D)00"
 
 # text
 T="$(i3-get-color i3wm_0D)ff"
@@ -13,7 +13,7 @@ T="$(i3-get-color i3wm_0D)ff"
 W="$(i3-get-color i3wm_08)ff"
 
 # verifying
-V="$(i3-get-color i3wm_0A)ff"
+V="$(i3-get-color i3wm_01)ff"
 
 i3lock \
 --insidevercolor=$C   \
@@ -38,6 +38,6 @@ i3lock \
 --blur 9              \
 --clock               \
 --indicator           \
---timestr="%H:%M:%S"  \
---datestr="%A, %m %Y" \
---keylayout 2         \
+--timestr="%H:%M"  \
+--datestr=""
+#--keylayout 2         \

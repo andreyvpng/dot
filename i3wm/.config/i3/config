@@ -1,14 +1,12 @@
 # General
-  #font pango:Cantarell 12
-  font pango:Open Sans 10
+  font pango:Cantarell 10
   set $mod Mod4
 
 
 # GAPS
-
-  smart_gaps on
-  gaps inner 8
-  gaps outer 2
+  #smart_gaps on
+  gaps inner 30
+  gaps outer 1
 
 
 # System mode
@@ -46,20 +44,16 @@
 
 
 # Workspace-relared bindings
-  set $ws1 1
-  set $ws2 2
-  set $ws3 3
-  set $ws4 4
-  set $ws5 5
-  set $ws6 6
+  set $ws1 1: Browser
+  set $ws2 2: Terminal
+  set $ws3 3: Files
+  set $ws4 4: Chat
+  set $ws5 5: Code
+  set $ws6 6: Office
   set $ws7 7
   set $ws8 8
   set $ws9 9
   set $ws0 10
-
-  # use tab to switch workspaces
-  workspace_auto_back_and_forth yes
-  bindsym $mod+Tab workspace back_and_forth
 
   bindsym $mod+1 workspace $ws1
   bindsym $mod+2 workspace $ws2
@@ -86,7 +80,8 @@
 
 
 # Window-Related bindings
-  bindsym $mod+Shift+q kill
+  bindsym $mod+q kill
+  bindsym $mod+x exec xkill
 
   # Use Mouse+$mod to drag floating windows to their wanted position
   floating_modifier $mod
@@ -97,7 +92,6 @@
   bindsym $mod+k focus up
   bindsym $mod+l focus right
 
-  # alternatively, you can use the cursor keys:
   bindsym $mod+Left focus left
   bindsym $mod+Down focus down
   bindsym $mod+Up focus up
@@ -109,7 +103,6 @@
   bindsym $mod+Shift+k move up
   bindsym $mod+Shift+l move right
 
-  # alternatively, you can use the cursor keys:
   bindsym $mod+Shift+Left move left
   bindsym $mod+Shift+Down move down
   bindsym $mod+Shift+Up move up
@@ -130,31 +123,27 @@
   bindsym $mod+e layout toggle split
 
   # toggle tiling / floating
-  bindsym $mod+Shift+space floating toggle
+  bindsym $mod+Shift+y floating toggle
 
   # change focus between tiling / floating windows
-  bindsym $mod+space focus mode_toggle
+  bindsym $mod+y focus mode_toggle
 
   # focus the parent container
   bindsym $mod+a focus parent
 
-  # focus the child container
-  #bindsym $mod+d focus child
-
   for_window [class="^.*"] border pixel 0
   for_window [tiling] border pixel 1
 
-  #for_window [class=".*"] border pixel 0
-
   for_window [window_role="pop-up"] floating enable
   for_window [class="Lxappearance"] floating enable
+  for_window [class="TelegramDesktop"] floating enable
 
 
 # Assign programs with workspace
-  assign [class="jetbrains-idea-ce"]        $ws2
-  assign [class="Firefox"]                  $ws3
-  assign [class="Org.gnome.Nautilus"]       $ws4
-  assign [class="TelegramDesktop"]          $ws0
+  assign [class="Firefox"]                  $ws1
+  assign [class="Org.gnome.Nautilus"]       $ws3
+  assign [class="TelegramDesktop"]          $ws4
+  assign [class="jetbrains-idea-ce"]        $ws5
   assign [class="KeePassXC"]                $ws0
 
 
@@ -203,34 +192,40 @@
 # Bar
   bar {
     status_command          i3blocks -c $HOME/.config/i3/blocks.conf
-    position                bottom
+    position                top
     wheel_up_cmd            nop
     wheel_down_cmd          nop
 
-    colors {
-        background $base00
-        separator  $base01
-        statusline $base04
+    mode hide
+    hidden_state hide
+    modifier $mod
 
-        # State             Border  BG      Text
-        focused_workspace   $base00 $base00 $base0D
-        active_workspace    $base00 $base05 $base03
-        inactive_workspace  $base00 $base00 $base01
-        urgent_workspace    $base00 $base00 $base08
-        binding_mode        $base00 $base00 $base0A
+    colors {
+      background $base00
+      separator  $base00
+      statusline $base04
+
+      # State             Border  BG      Text
+      focused_workspace   $base00 $base00 $base0D
+      active_workspace    $base00 $base05 $base03
+      inactive_workspace  $base00 $base00 $base03
+      urgent_workspace    $base00 $base00 $base08
+      binding_mode        $base00 $base00 $base03
     }
   }
 
 
 # Launcher
   bindsym $mod+d exec i3-runner
-  bindsym $mod+b exec firefox
+  bindsym $mod+b exec qutebrowser
+  bindsym $mod+Shift+b exec firefox
 
 
 # Volume Control
-  bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute
-  bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
-  bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+  bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute  && pkill -SIGRTMIN+10 i3blocks
+  bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute  && pkill -SIGRTMIN+10 i3blocks
+  bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks
+
 
 
 # Increase brightness
@@ -239,39 +234,31 @@
 
 
 # Terminal
-  bindsym $mod+Return exec i3-sensible-terminal
+  bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 
 # File Manager
-  bindsym $mod+t exec urxvt -e ranger
+  bindsym $mod+t exec --no-startup-id urxvt -e ranger
 
 
 # ScreenShot
   bindsym --release $mod+p exec maim ~/Documents/Pictures/$(date +%s).png
 
 
-#bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
-
 # background
   exec --no-startup-id nitrogen --restore
 # network
   exec --no-startup-id nm-applet
 # power manager
-  exec xfce4-power-manager
+  exec --no-startup-id xfce4-power-manager
 # keyboard layouts
   exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
 # audio
   exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
-
-
+# auto mount
+  exec_always --no-startup-id udiskie
 # compton
   exec --no-startup-id compton
-# red light
-  exec --no-startup-id redshift
-  #exec --no-startup-id pasystray
 
-  #https://github.com/Maato/volumeicon
-
-# other
+  exec qutebrowser
   exec telegram-desktop
-  exec keepassxc

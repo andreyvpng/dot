@@ -1,6 +1,5 @@
 URxvt.depth:                      32
-!URxvt.background:                 [100]#222D31
-URxvt.borderColor:                base00
+
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
@@ -8,9 +7,7 @@ URxvt*background:                 base00
 URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 
-
 URxvt*font: xft:DejaVu Sans Mono:size=12
-
 
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                   false

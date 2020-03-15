@@ -1,0 +1,16 @@
+render n
+next_img C-l
+prev_img C-h
+
+zoom_in       i
+zoom_out      o
+zoom_default  e
+zoom_fit      a
+
+orient_1 r
+orient_3 C-r
+
+scroll_up    k
+scroll_down  j
+scroll_left  h
+scroll_right l
