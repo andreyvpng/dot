@@ -8,17 +8,9 @@ get_answer() {
   fi
 }
 
-if [ $(get_answer "Install oh-my-zsh?") ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
 if [ $(get_answer "Install vim-plug?") ]; then
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-if [ $(get_answer "Install base16-shell?") ]; then
-  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 fi
 
 directories=$(ls)
@@ -28,7 +20,8 @@ for item in $directories; do
     "..")   continue;;
     ".git") continue;;
     "old")  continue;;
+    "install") continue;;
     *)
-      #dotmanager -d $item -c add -b old
+      dotmanager -d $item -c add -b old
   esac
 done

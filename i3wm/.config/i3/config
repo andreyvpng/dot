@@ -1,11 +1,11 @@
 # General
   font pango:Cantarell 10
   set $mod Mod4
+  set $alt Mod1
 
 
 # GAPS
-  #smart_gaps on
-  gaps inner 30
+  gaps inner 10
   gaps outer 1
 
 
@@ -22,7 +22,7 @@
     bindsym Return mode "default"
     bindsym Escape mode "default"
   }
-  bindsym $mod+Escape mode "$mode_system"
+  bindsym $mod+0 mode "$mode_system"
 
 
 # Resize mode
@@ -52,8 +52,6 @@
   set $ws6 6: Office
   set $ws7 7
   set $ws8 8
-  set $ws9 9
-  set $ws0 10
 
   bindsym $mod+1 workspace $ws1
   bindsym $mod+2 workspace $ws2
@@ -63,8 +61,6 @@
   bindsym $mod+6 workspace $ws6
   bindsym $mod+7 workspace $ws7
   bindsym $mod+8 workspace $ws8
-  bindsym $mod+9 workspace $ws9
-  bindsym $mod+0 workspace $ws0
 
   # move focused container to workspace
   bindsym $mod+Shift+1 move container to workspace $ws1
@@ -75,12 +71,10 @@
   bindsym $mod+Shift+6 move container to workspace $ws6
   bindsym $mod+Shift+7 move container to workspace $ws7
   bindsym $mod+Shift+8 move container to workspace $ws8
-  bindsym $mod+Shift+9 move container to workspace $ws9
-  bindsym $mod+Shift+0 move container to workspace $ws0
 
 
 # Window-Related bindings
-  bindsym $mod+q kill
+  bindsym $mod+Shift+q kill
   bindsym $mod+x exec xkill
 
   # Use Mouse+$mod to drag floating windows to their wanted position
@@ -181,13 +175,14 @@
   set_from_resource $base0E i3wm_0E #ffffff
   set_from_resource $base0F i3wm_0F #ffffff
 
+  # Basic color configuration using the Base16 variables for windows and borders.
+  # Property Name         Border  BG      Text    Indicator Child Border
   client.focused          $base05 $base0D $base00 $base0D $base0C
   client.focused_inactive $base01 $base01 $base05 $base03 $base01
   client.unfocused        $base01 $base00 $base05 $base01 $base01
   client.urgent           $base08 $base08 $base00 $base08 $base08
   client.placeholder      $base00 $base00 $base05 $base00 $base00
   client.background       $base07
-
 
 # Bar
   bar {
@@ -201,16 +196,16 @@
     modifier $mod
 
     colors {
-      background $base00
-      separator  $base00
-      statusline $base04
+        background $base00
+        separator  $base01
+        statusline $base04
 
-      # State             Border  BG      Text
-      focused_workspace   $base00 $base00 $base0D
-      active_workspace    $base00 $base05 $base03
-      inactive_workspace  $base00 $base00 $base03
-      urgent_workspace    $base00 $base00 $base08
-      binding_mode        $base00 $base00 $base03
+        # State             Border  BG      Text
+        focused_workspace   $base05 $base0D $base00
+        active_workspace    $base05 $base03 $base00
+        inactive_workspace  $base03 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
     }
   }
 
@@ -227,12 +222,6 @@
   bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks
 
 
-
-# Increase brightness
-  bindsym XF86MonBrightnessUp exec light -A 5
-  bindsym XF86MonBrightnessDown exec light -U 5
-
-
 # Terminal
   bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
@@ -242,7 +231,7 @@
 
 
 # ScreenShot
-  bindsym --release $mod+p exec maim ~/Documents/Pictures/$(date +%s).png
+  bindsym --release $alt+p exec maim ~/Documents/Pictures/$(date +%s).png
 
 
 # background
@@ -259,6 +248,8 @@
   exec_always --no-startup-id udiskie
 # compton
   exec --no-startup-id compton
+# red light
+  exec --no-startup-id redshift
 
   exec qutebrowser
   exec telegram-desktop

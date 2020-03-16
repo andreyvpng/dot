@@ -2,8 +2,8 @@
 set -o errexit
 
 bg=$(i3-get-color i3wm_00)
-sf=$(i3-get-color i3wm_0D)
-nf=$(i3-get-color i3wm_01)
+sf=$(i3-get-color i3wm_03)
+nf=$(i3-get-color i3wm_03)
 
 HISTORY="$HOME/.drun_history"
 test -f "$HISTORY" || touch "$HISTORY"

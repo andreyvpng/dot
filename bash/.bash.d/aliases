@@ -1,0 +1,33 @@
+#!/bin/bash
+
+alias fuck="pkill -9"
+alias reload!=". ~/.bashrc"
+
+alias ..="cd .."
+alias ll="ls -lhA"
+alias la="ls -A"
+alias ~="cd ~"
+# go usb flash
+alias guf="cd /run/media/$(whoami)"
+
+alias c="clear"
+
+alias ga="git add"
+alias gd="git diff"
+alias gp="git push"
+alias gs="git status"
+alias gc="git commit"
+alias gaa="git add -A"
+alias gpf="git push -f"
+alias gcm="git commit -m"
+alias gca="git commit --amend"
+alias gl="git log --all --decorate --oneline --graph"
+alias gauto="git add . && git commit -m 'auto-commit' && git push origin master"
+
+alias top="htop"
+alias r="ranger"
+alias n="nvim"
+alias vim="nvim"
+
+alias print_file="lpr -P Canon_MP280_series"
+alias printer_list="lpstat -p -d"

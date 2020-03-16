@@ -6,7 +6,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 
 " Color
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'mhinz/vim-startify'
 
 " Organize
@@ -30,7 +30,6 @@ Plug 'udalov/kotlin-vim'
 " install curl, mpv
 Plug 'soywod/phonetics.vim'
 Plug 'camspiers/lens.vim'
-Plug 'ap/vim-css-color'
 
 call plug#end()
 
@@ -39,8 +38,8 @@ call plug#end()
 " => Colorscheme
 """"""""""""""""""""""""""""""
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-solarized-dark
+"let base16colorspace=256  " Access colors present in 256 colorspace
+"colorscheme base16-solarized-dark
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 
