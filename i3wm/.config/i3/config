@@ -138,7 +138,7 @@
   assign [class="Org.gnome.Nautilus"]       $ws3
   assign [class="TelegramDesktop"]          $ws4
   assign [class="jetbrains-idea-ce"]        $ws5
-  assign [class="KeePassXC"]                $ws0
+  assign [class="KeePassXC"]                $ws8
 
 
 # Scratchpad
