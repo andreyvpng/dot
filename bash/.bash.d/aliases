@@ -29,5 +29,8 @@ alias r="ranger"
 alias n="nvim"
 alias vim="nvim"
 
+alias torstart="service tor start"
+alias torstop="service tor stop"
+
 alias print_file="lpr -P Canon_MP280_series"
 alias printer_list="lpstat -p -d"

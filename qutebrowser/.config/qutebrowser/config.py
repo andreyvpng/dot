@@ -151,4 +151,8 @@ for i in range(1, 10):
     config.bind(str(i), 'buffer ' + str(i), mode='normal')
 config.bind('0', 'buffer 10', mode='normal')
 
+# TOR
+config.bind('te', 'set content.proxy socks://localhost:9050/', mode='normal')
+config.bind('td', 'set content.proxy system', mode='normal')
+
 config.bind('<Ctrl-E>', 'open-editor', mode='insert')
