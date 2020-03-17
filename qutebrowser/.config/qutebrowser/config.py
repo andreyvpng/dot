@@ -133,7 +133,7 @@ c.colors.tabs.selected.even.bg = base0D
 
 # Background color for webpages if unset (or empty to use the theme's
 # color).
-# c.colors.webpage.bg = base00
+c.colors.webpage.bg = base00
 
 c.content.geolocation = False
 c.url.start_pages = ['qute://bookmarks']
@@ -152,7 +152,10 @@ for i in range(1, 10):
 config.bind('0', 'buffer 10', mode='normal')
 
 # TOR
-config.bind('te', 'set content.proxy socks://localhost:9050/', mode='normal')
-config.bind('td', 'set content.proxy system', mode='normal')
+def bind_chained(key, *commands):
+    config.bind(key, ' ;; '.join(commands))
+
+bind_chained('te', 'set content.proxy socks://localhost:9050/', 'message-info "tor enable"');
+bind_chained('td', 'set content.proxy system', 'message-info "tor disable"');
 
 config.bind('<Ctrl-E>', 'open-editor', mode='insert')
