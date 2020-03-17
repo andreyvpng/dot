@@ -102,7 +102,6 @@ set cursorline
 set nofoldenable
 
 set guitablabel=%N/\ %t\ %M
-" TODO: do pretty
 set tabline=%!MyTabLine()  " custom tab pages line
 function MyTabLine()
   let s = '' " complete tabline goes here
@@ -173,7 +172,6 @@ function MyTabLine()
   endif
   return s
 endfunction
-
 
 """""""""""""""""""""""""""""
 " => General mapping
