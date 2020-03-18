@@ -1,5 +1,6 @@
 # General
-  font pango:Cantarell 10
+  font pango:Cantarell 11
+  #font pango:Roboto Light 10
   set $mod Mod4
   set $alt Mod1
 
@@ -63,14 +64,14 @@
   bindsym $mod+8 workspace $ws8
 
   # move focused container to workspace
-  bindsym $mod+Shift+1 move container to workspace $ws1
-  bindsym $mod+Shift+2 move container to workspace $ws2
-  bindsym $mod+Shift+3 move container to workspace $ws3
-  bindsym $mod+Shift+4 move container to workspace $ws4
-  bindsym $mod+Shift+5 move container to workspace $ws5
-  bindsym $mod+Shift+6 move container to workspace $ws6
-  bindsym $mod+Shift+7 move container to workspace $ws7
-  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 
 # Window-Related bindings
@@ -233,6 +234,9 @@
 # ScreenShot
   bindsym --release $alt+p exec maim ~/Documents/Pictures/$(date +%s).png
 
+# Vim for notes
+  bindsym $mod+n exec urxvt -e nvim -c ":Notes"
+
 
 # background
   exec --no-startup-id nitrogen --restore
@@ -250,6 +254,8 @@
   exec --no-startup-id compton
 # red light
   exec --no-startup-id redshift
+# auto lock after suspend
+  exec --no-startup-id xss-lock -- i3-exit lock
 
   exec qutebrowser
   exec telegram-desktop

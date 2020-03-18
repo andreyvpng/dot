@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PROMPT_COMMAND='history -a'
+
+HISTSIZE=500000
+HISTFILESIZE=100000
+
+# avoid dublicate
+HISTCONTROL="erasedups:ignoreboth"
+
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
+bind '"\C-k": history-search-backward'
+bind '"\C-j": history-search-forward'

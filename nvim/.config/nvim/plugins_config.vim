@@ -21,6 +21,8 @@ Plug 'airblade/vim-gitgutter'
 
 " MarkDown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " Kotlin
 Plug 'udalov/kotlin-vim'

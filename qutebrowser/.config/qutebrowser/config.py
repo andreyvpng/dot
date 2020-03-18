@@ -144,7 +144,7 @@ c.session.lazy_restore = True
 c.backend = 'webengine'
 config.set('content.headers.user_agent', "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
 # confirm when write :q
-c.confirm_quit = ['always']
+#c.confirm_quit = ['always']
 
 # use 0..9 to switch tab
 for i in range(1, 10):

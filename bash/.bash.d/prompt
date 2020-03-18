@@ -2,6 +2,16 @@
 
 PROMPT_COMMAND=__prompt_command
 
+
+function virtualenv_info(){
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    venv="${VIRTUAL_ENV##*/}"
+  else
+    venv=''
+  fi
+  [[ -n "$venv" ]] && echo "(venv:$venv) "
+}
+
 __prompt_command() {
     local EXIT="$?"
     PS1=""
@@ -16,7 +26,7 @@ __prompt_command() {
     PS1+="${green}\u${blue}@\h:\w"
     PS1+="${git_branch}"
     PS1+="\n${green} └─"
-    [[ $EXIT != 0 ]] && \
-      PS1+="${red} $EXIT"
+    [[ $EXIT != 0 ]] && PS1+="${red} $EXIT"
+    PS1+="$(virtualenv_info)"
     PS1+=" $ ${normal}"
 }

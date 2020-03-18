@@ -1,30 +1,38 @@
 # .bashrc
 
+
+############
+# default
+############
+
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
 
-[ -d "$HOME/jdk" ] && \
-  PATH="$PATH:$HOME/jdk/bin"
+############
+# general
+############
 
-[ -d "$HOME/go" ] && \
-  export GOPATH=$HOME/go
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
 
-PATH="$PATH:$GOPATH/bin"
+bind '"\C-h": backward-word'
+bind '"\C-d\C-h": backward-kill-word'
+bind '"\C-l": forward-word'
+bind '"\C-d\C-l": kill-word'
 
-export PATH
+# Update window size after every command
+shopt -s checkwinsize
 
-export EDITOR='nvim'
+[ -f "$HOME/.dircolors" ] && eval "$(dircolors ~/.dircolors)"
+
+############
+# ~/.bash.d
+############
 
 if [ -d ~/.bash.d ]; then
     for i in ~/.bash.d/*; do
         [ -f "${i}" ] && source "${i}"
     done
 fi
-
-[ -f "$HOME/.dircolors" ] && \
-  eval "$(dircolors ~/.dircolors)"
