@@ -1,162 +1,23 @@
 # General
-  font pango:Cantarell 11
-  #font pango:Roboto Light 10
+  font pango:Cantarell 10
   set $mod Mod4
   set $alt Mod1
 
+# Startup
+  exec --no-startup-id nitrogen --restore
+  exec --no-startup-id nm-applet
+  exec --no-startup-id xfce4-power-manager
+  exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
+  exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
+  exec_always --no-startup-id udiskie
+  exec --no-startup-id compton
+  exec --no-startup-id redshift
+  exec --no-startup-id xss-lock -- i3-exit lock
+  exec telegram-desktop
 
 # GAPS
   gaps inner 10
   gaps outer 1
-
-
-# System mode
-  set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-  mode "$mode_system" {
-    bindsym l exec --no-startup-id i3-exit lock, mode "default"
-    bindsym e exec --no-startup-id i3-exit logout, mode "default"
-    bindsym s exec --no-startup-id i3-exit suspend, mode "default"
-    bindsym h exec --no-startup-id i3-exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3-exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-  }
-  bindsym $mod+0 mode "$mode_system"
-
-
-# Resize mode
-  mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-  }
-  bindsym $mod+r mode "resize"
-
-
-# Workspace-relared bindings
-  set $ws1 1: Browser
-  set $ws2 2: Terminal
-  set $ws3 3: Files
-  set $ws4 4: Chat
-  set $ws5 5: Code
-  set $ws6 6: Office
-  set $ws7 7
-  set $ws8 8
-
-  bindsym $mod+1 workspace $ws1
-  bindsym $mod+2 workspace $ws2
-  bindsym $mod+3 workspace $ws3
-  bindsym $mod+4 workspace $ws4
-  bindsym $mod+5 workspace $ws5
-  bindsym $mod+6 workspace $ws6
-  bindsym $mod+7 workspace $ws7
-  bindsym $mod+8 workspace $ws8
-
-  # move focused container to workspace
-  bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-  bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-  bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-  bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-  bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-  bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-  bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-  bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-
-
-# Window-Related bindings
-  bindsym $mod+Shift+q kill
-  bindsym $mod+x exec xkill
-
-  # Use Mouse+$mod to drag floating windows to their wanted position
-  floating_modifier $mod
-
-  # change focus
-  bindsym $mod+h focus left
-  bindsym $mod+j focus down
-  bindsym $mod+k focus up
-  bindsym $mod+l focus right
-
-  bindsym $mod+Left focus left
-  bindsym $mod+Down focus down
-  bindsym $mod+Up focus up
-  bindsym $mod+Right focus right
-
-  # move focused window
-  bindsym $mod+Shift+h move left
-  bindsym $mod+Shift+j move down
-  bindsym $mod+Shift+k move up
-  bindsym $mod+Shift+l move right
-
-  bindsym $mod+Shift+Left move left
-  bindsym $mod+Shift+Down move down
-  bindsym $mod+Shift+Up move up
-  bindsym $mod+Shift+Right move right
-
-  # split in horizontal orientation
-  bindsym $mod+g split h
-
-  # split in vertical orientation
-  bindsym $mod+v split v
-
-  # enter fullscreen mode for the focused container
-  bindsym $mod+f fullscreen toggle
-
-  # change container layout (stacked, tabbed, toggle split)
-  bindsym $mod+s layout stacking
-  bindsym $mod+w layout tabbed
-  bindsym $mod+e layout toggle split
-
-  # toggle tiling / floating
-  bindsym $mod+Shift+y floating toggle
-
-  # change focus between tiling / floating windows
-  bindsym $mod+y focus mode_toggle
-
-  # focus the parent container
-  bindsym $mod+a focus parent
-
-  for_window [class="^.*"] border pixel 0
-  for_window [tiling] border pixel 1
-
-  for_window [window_role="pop-up"] floating enable
-  for_window [class="Lxappearance"] floating enable
-  for_window [class="TelegramDesktop"] floating enable
-
-
-# Assign programs with workspace
-  assign [class="Firefox"]                  $ws1
-  assign [class="Org.gnome.Nautilus"]       $ws3
-  assign [class="TelegramDesktop"]          $ws4
-  assign [class="jetbrains-idea-ce"]        $ws5
-  assign [class="KeePassXC"]                $ws8
-
-
-# Scratchpad
-  bindsym $mod+Shift+grave move scratchpad
-  bindsym $mod+grave scratchpad show
-
-
-# Restart
-  # reload the configuration file
-  bindsym $mod+Shift+c reload
-  # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-  bindsym $mod+Shift+r restart
-
-
-# Exit i3
-  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 
 # Style
   set_from_resource $base00 i3wm_00 #ffffff
@@ -185,16 +46,19 @@
   client.placeholder      $base00 $base00 $base05 $base00 $base00
   client.background       $base07
 
+  for_window [class="^.*"] border pixel 0
+  for_window [tiling] border pixel 5
+
 # Bar
   bar {
     status_command          i3blocks -c $HOME/.config/i3/blocks.conf
-    position                top
+    position                bottom
     wheel_up_cmd            nop
     wheel_down_cmd          nop
 
-    mode hide
-    hidden_state hide
-    modifier $mod
+    #mode hide
+    #hidden_state hide
+    #modifier $mod
 
     colors {
         background $base00
@@ -202,60 +66,156 @@
         statusline $base04
 
         # State             Border  BG      Text
-        focused_workspace   $base05 $base0D $base00
-        active_workspace    $base05 $base03 $base00
-        inactive_workspace  $base03 $base01 $base05
-        urgent_workspace    $base08 $base08 $base00
-        binding_mode        $base00 $base0A $base00
+        focused_workspace   $base00 $base00 $base0D
+        active_workspace    $base00 $base00 $base03
+        inactive_workspace  $base00 $base00 $base01
+        urgent_workspace    $base00 $base00 $base08
+        binding_mode        $base00 $base00 $base0A
     }
   }
 
+# Restart
+  # reload the configuration file
+  bindsym $mod+Shift+c reload
+  # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+  bindsym $mod+Shift+r restart
 
-# Launcher
+# Workspace-relared bindings
+  # browser
+  set $ws1 1
+  # terminal
+  set $ws2 2
+  # files
+  set $ws3 3
+  # chat
+  set $ws4 4
+  # code
+  set $ws5 5
+  # offce
+  set $ws6 6
+  set $ws7 7
+  set $ws8 8
+
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+
+  # move focused container to workspace
+  bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+
+# Window-Related bindings
+  bindsym $mod+x kill
+
+  # Use Mouse+$mod to drag floating windows to their wanted position
+  floating_modifier $mod
+
+  # change focus
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Up focus up
+  bindsym $mod+Right focus right
+
+  # move focused window
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+j move down
+  bindsym $mod+Shift+k move up
+  bindsym $mod+Shift+l move right
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Up move up
+  bindsym $mod+Shift+Right move right
+
+  # split in horizontal orientation
+  bindsym $mod+g split h
+  # split in vertical orientation
+  bindsym $mod+v split v
+
+  # enter fullscreen mode for the focused container
+  bindsym $mod+f fullscreen toggle
+
+  # change container layout (stacked, tabbed, toggle split)
+  bindsym $mod+s layout stacking
+  bindsym $mod+w layout tabbed
+  bindsym $mod+e layout toggle split
+
+  # toggle tiling / floating
+  bindsym $mod+Shift+y floating toggle
+
+  # change focus between tiling / floating windows
+  bindsym $mod+y focus mode_toggle
+
+  # focus the parent container
+  bindsym $mod+a focus parent
+
+# System mode
+  set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+  mode "$mode_system" {
+    bindsym l exec --no-startup-id i3-exit lock, mode "default"
+    bindsym e exec --no-startup-id i3-exit logout, mode "default"
+    bindsym s exec --no-startup-id i3-exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3-exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3-exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  bindsym $mod+0 mode "$mode_system"
+
+# Resize mode
+  mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  bindsym $mod+r mode "resize"
+
+# Assign programs with workspace
+  assign [class="Firefox"]                  $ws1
+  assign [class="Org.gnome.Nautilus"]       $ws3
+  assign [class="TelegramDesktop"]          $ws4
+  assign [class="jetbrains-idea-ce"]        $ws5
+  assign [class="KeePassXC"]                $ws8
+
+# Scratchpad
+  bindsym $mod+Shift+grave move scratchpad
+  bindsym $mod+grave scratchpad show
+
+
+# Runner
   bindsym $mod+d exec i3-runner
+  bindsym $mod+Return exec urxvt
   bindsym $mod+b exec qutebrowser
-  bindsym $mod+Shift+b exec firefox
-
+  bindsym $mod+t exec --no-startup-id urxvt -e ranger
+  bindsym --release $alt+p exec maim ~/Documents/Pictures/$(date +%s).png
+  bindsym $mod+n exec urxvt -e nvim -c ":Notes"
 
 # Volume Control
   bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute  && pkill -SIGRTMIN+10 i3blocks
   bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute  && pkill -SIGRTMIN+10 i3blocks
   bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks
-
-
-# Terminal
-  bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
-
-
-# File Manager
-  bindsym $mod+t exec --no-startup-id urxvt -e ranger
-
-
-# ScreenShot
-  bindsym --release $alt+p exec maim ~/Documents/Pictures/$(date +%s).png
-
-# Vim for notes
-  bindsym $mod+n exec urxvt -e nvim -c ":Notes"
-
-
-# background
-  exec --no-startup-id nitrogen --restore
-# network
-  exec --no-startup-id nm-applet
-# power manager
-  exec --no-startup-id xfce4-power-manager
-# keyboard layouts
-  exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
-# audio
-  exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
-# auto mount
-  exec_always --no-startup-id udiskie
-# compton
-  exec --no-startup-id compton
-# red light
-  exec --no-startup-id redshift
-# auto lock after suspend
-  exec --no-startup-id xss-lock -- i3-exit lock
-
-  exec qutebrowser
-  exec telegram-desktop
