@@ -209,7 +209,8 @@
 
 
 # Runner
-  bindsym $mod+d exec i3-runner
+  #bindsym $mod+d exec i3-runner
+  bindsym $mod+d exec rofi -show drun
   bindsym $mod+Return exec urxvt
   bindsym $mod+b exec qutebrowser
   bindsym $mod+m exec qutebrowser --target window m.vk.com/audio
