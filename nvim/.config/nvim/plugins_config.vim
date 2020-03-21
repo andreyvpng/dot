@@ -28,6 +28,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'udalov/kotlin-vim'
 
 " Other
+"
+"https://github.com/skammer/vim-css-color
+Plug 'ap/vim-css-color'
 
 " install curl, mpv
 Plug 'soywod/phonetics.vim'
@@ -42,7 +45,6 @@ call plug#end()
 
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-solarized-dark
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 
 """"""""""""""""""""""""""""""
@@ -136,3 +138,5 @@ let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
+
+let g:cssColorVimDoNotMessMyUpdatetime = 1

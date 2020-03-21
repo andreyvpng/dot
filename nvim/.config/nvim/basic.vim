@@ -68,7 +68,7 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЙ
 syntax on
 
 " override color scheme to make vertical separator fit
-autocmd ColorScheme * hi VertSplit ctermbg=NONE guibg=NONE
+"autocmd ColorScheme * hi VertSplit ctermbg=NONE guibg=NONE
 
 "set split separator
 set fillchars+=vert:│
@@ -78,6 +78,8 @@ set background=dark
 
 "set termguicolors
 set t_Co=256
+let base16colorspace=256
+
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -190,7 +192,7 @@ nnoremap <leader>w :w!<cr>
 " Fast quit
 nnoremap <leader>q :q<cr>
 " Fast quit all windows
-nnoremap <leader>qa :qall<cr>
+nnoremap <leader>Q :qall<cr>
 
 " Fix common typos
 cnoreabbrev W w
@@ -201,7 +203,6 @@ cnoreabbrev WQ wq
 
 " uppercase
 inoremap <c-u> <ESC>viwUea
-nnoremap <c-u> <ESC>viwU
 
 " toggle wrap
 nnoremap <leader>W :set wrap!<cr>
@@ -213,10 +214,6 @@ nnoremap <leader>N :set number!<cr>
 """""""""""""""""""""""""""""
 " => Moving
 """""""""""""""""""""""""""""
-
-" map to search
-" nnoremap <space> /
-" nnoremap <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
