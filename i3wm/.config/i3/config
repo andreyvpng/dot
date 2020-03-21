@@ -4,6 +4,7 @@
   set $alt Mod1
 
 # Startup
+  exec --no-startup-id amixer -q -D pulse set Master mute
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id nm-applet
   exec --no-startup-id xfce4-power-manager
@@ -16,7 +17,7 @@
   exec telegram-desktop
 
 # GAPS
-  gaps inner 10
+  gaps inner 14
   gaps outer 1
 
 # Style
@@ -47,7 +48,7 @@
   client.background       $base07
 
   for_window [class="^.*"] border pixel 0
-  for_window [tiling] border pixel 5
+  for_window [tiling] border pixel 10
 
 # Bar
   bar {
@@ -211,6 +212,7 @@
   bindsym $mod+d exec i3-runner
   bindsym $mod+Return exec urxvt
   bindsym $mod+b exec qutebrowser
+  bindsym $mod+m exec qutebrowser --target window m.vk.com/audio
   bindsym $mod+t exec --no-startup-id urxvt -e ranger
   bindsym --release $alt+p exec maim ~/Documents/Pictures/$(date +%s).png
   bindsym $mod+n exec urxvt -e nvim -c ":Notes"
