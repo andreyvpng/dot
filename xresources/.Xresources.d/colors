@@ -22,7 +22,6 @@
 *background:   base00
 #endif
 *cursorColor:  base05
-
 *i3wm_00:       base00
 *i3wm_01:       base01
 *i3wm_02:       base02

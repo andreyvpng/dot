@@ -1,5 +1,7 @@
 URxvt.depth:                      32
-
+urxvt*depth: 32
+!urxvt*background: rgba:0004/0021/0035/c800
+URxvt.background: [85]#041523
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
@@ -7,12 +9,12 @@ URxvt*background:                 base00
 URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 
-!URxvt*font: xft:DejaVu Sans Mono:size=12
+!*font: xft:DejaVu Sans Mono:size=12
 
-*.font: xft:Iosevka:style=Regular:size=11
-*.boldFont: xft:Iosevka:style=Bold:size=11
-*.italicFont: xft:Iosevka:style=Italic:size=11
-*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=11
+URxvt*.font: xft:Iosevka:style=Regular:size=11
+URxvt*.boldFont: xft:Iosevka:style=Bold:size=11
+URxvt*.italicFont: xft:Iosevka:style=Italic:size=11
+URxvt*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=11
 
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                   false
