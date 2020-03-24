@@ -47,3 +47,11 @@ if [ -d ~/.bash.d ]; then
         [ -f "${i}" ] && source "${i}"
     done
 fi
+
+############
+# start x
+#############
+
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
