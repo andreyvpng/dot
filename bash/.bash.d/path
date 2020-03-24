@@ -5,5 +5,6 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 [ -d "$HOME/jdk" ] && PATH="$PATH:$HOME/jdk/bin"
 [ -d "$HOME/go" ]  && export GOPATH=$HOME/go
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 PATH="$PATH:$GOPATH/bin"
 export PATH
