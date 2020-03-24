@@ -14,7 +14,6 @@
   exec --no-startup-id compton
   exec --no-startup-id redshift
   exec --no-startup-id xss-lock -- i3-exit lock
-  exec telegram-desktop
 
 # GAPS
   gaps inner 14
@@ -38,6 +37,9 @@
   set_from_resource $base0E i3wm_0E #ffffff
   set_from_resource $base0F i3wm_0F #ffffff
 
+  #                 RRGGBBAA
+  set $transparent #00000000
+
   # Basic color configuration using the Base16 variables for windows and borders.
   # Property Name         Border  BG      Text    Indicator Child Border
   client.focused          $base05 $base0D $base00 $base0D $base0C
@@ -53,25 +55,22 @@
 # Bar
   bar {
     status_command          i3blocks -c $HOME/.config/i3/blocks.conf
+    i3bar_command i3bar --transparency
     position                bottom
     wheel_up_cmd            nop
     wheel_down_cmd          nop
 
-    #mode hide
-    #hidden_state hide
-    #modifier $mod
-
     colors {
-        background $base00
+        background $transparent
         separator  $base01
-        statusline $base04
+        statusline $base01
 
         # State             Border  BG      Text
-        focused_workspace   $base00 $base00 $base0D
-        active_workspace    $base00 $base00 $base03
-        inactive_workspace  $base00 $base00 $base01
-        urgent_workspace    $base00 $base00 $base08
-        binding_mode        $base00 $base00 $base0A
+        focused_workspace   $base0D $transparent $base0D
+        active_workspace    $base0A $transparent $base03
+        inactive_workspace  $base0A $transparent $base01
+        urgent_workspace    $base0A $transparent $base08
+        binding_mode        $base0A $transpatent $base01
     }
   }
 
