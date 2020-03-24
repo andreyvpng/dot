@@ -1,4 +1,5 @@
 #!/bin/bash
+
 get_answer() {
   read -p "$1 (y/n) " answer
   if [ $answer = "y" ] || [ $answer = "yes" ]; then
@@ -8,22 +9,18 @@ get_answer() {
   fi
 }
 
-directories="bash tmux ranger nvim dircolors profile"
-if [ ! $(get_answer "Install only shell dotfiles?") ]; then
-  directories+="feh i3wm qutebrowser xresources"
-fi
 if [ $(get_answer "Install vim-plug?") ]; then
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-wget https://git.io/JvKXM
-chmod +x JvKXM
-mv ./JvKXM ./dotmanager
+all_dirs=$(ls .)
 
-for item in $directories; do
-  ./dotmanager -d $item -c add -b old
+for dir in $all_dirs; do
+  case dir in
+    old)
+      continue;;
+     *)
+       dotmanager -c add -b old -d $dir
+   esac
 done
-
-mkdir -p $HOME/bin
-mv ./dotmanager $HOME/bin/dotmanager
