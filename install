@@ -14,13 +14,13 @@ if [ $(get_answer "Install vim-plug?") ]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-all_dirs=$(ls .)
+all_dirs=$(ls -d */)
 
 for dir in $all_dirs; do
   case dir in
     old)
       continue;;
-     *)
-       dotmanager -c add -b old -d $dir
+    *)
+      dotmanager -c add -b old -d $dir
    esac
 done
