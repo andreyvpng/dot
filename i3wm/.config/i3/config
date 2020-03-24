@@ -11,7 +11,7 @@
   exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
   exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
   exec_always --no-startup-id udiskie
-  exec --no-startup-id compton
+  exec --no-startup-id picom --config ~/.picom.conf
   exec --no-startup-id redshift
   exec --no-startup-id xss-lock -- i3-exit lock
 
