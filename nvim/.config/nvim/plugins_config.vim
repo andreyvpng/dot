@@ -57,6 +57,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 noremap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
+let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=28
 let NERDTreeMinimalUI=1
