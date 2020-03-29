@@ -66,11 +66,11 @@
       statusline $base04
 
       # State             Border  BG      Text
-      focused_workspace   $base04 $transparent $base04
-      active_workspace    $base03 $transparent $base01
-      inactive_workspace  $base03 $transparent $base03
-      urgent_workspace    $base08 $transparent $base08
-      binding_mode        $base04 $transparent $base04
+      focused_workspace   $transparent $transparent $base04
+      active_workspace    $transparent $transparent $base01
+      inactive_workspace  $transparent $transparent $base03
+      urgent_workspace    $transparent $transparent $base08
+      binding_mode        $transparent $transparent $base04
     }
   }
 
