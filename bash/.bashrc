@@ -40,7 +40,7 @@ function colorscheme() {
 # ~/.bash.d
 ############
 
-BASE16_SHELL_SET_BACKGROUND=false
+#BASE16_SHELL_SET_BACKGROUND=false
 
 if [ -d ~/.bash.d ]; then
     for i in ~/.bash.d/*; do
@@ -48,10 +48,15 @@ if [ -d ~/.bash.d ]; then
     done
 fi
 
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 ############
 # start x
 #############
 
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
+#if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  #exec startx
+#fi
