@@ -18,6 +18,7 @@ Plug 'mattn/emmet-vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " MarkDown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -28,9 +29,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'udalov/kotlin-vim'
 
 " Other
-"
-"https://github.com/skammer/vim-css-color
-Plug 'ap/vim-css-color'
+Plug 'tpope/vim-surround'
 
 " install curl, mpv
 Plug 'soywod/phonetics.vim'
@@ -38,12 +37,16 @@ Plug 'camspiers/lens.vim'
 
 call plug#end()
 
+" manage plugins
+nnoremap <leader>pli :PlugInstall<cr>
+nnoremap <leader>plc :PlugClean<cr>
+
 
 """"""""""""""""""""""""""""""
 " => Colorscheme
 """"""""""""""""""""""""""""""
 
-"let base16colorspace=256  " Access colors present in 256 colorspace
+let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-solarized-dark
 
 
@@ -51,7 +54,7 @@ call plug#end()
 " => NERDTree
 """"""""""""""""""""""""""""""
 
-noremap <C-n> :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDTreeWinPos='left'
@@ -88,15 +91,17 @@ let g:user_emmet_leader_key=','
 
 nnoremap <leader>gt :GitGutterToggle<cr>
 autocmd BufWritePost * GitGutter
-
-let g:gitgutter_enabled = 0
+let g:gitgutter_override_sign_column_highlight = 1
+let g:gitgutter_enabled = 1
 let g:gitgutter_signs = 1
 let g:gitgutter_async = 1
-let g:gitgutter_sign_added = '│' " U+2502
-let g:gitgutter_sign_removed = '│' " U+2502
-let g:gitgutter_sign_removed_first_line = '│' " U+2502
-let g:gitgutter_sign_modified = '│' " U2
-let g:gitgutter_sign_modified_removed = '│' " U+2502
+
+
+""""""""""""""""""""""""""""""
+" => vim-fugitive
+""""""""""""""""""""""""""""""
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gp :Gpush<cr>
 
 
 """"""""""""""""""""""""""""""

@@ -12,4 +12,4 @@ function! Notes()
     exec 'CtrlP' l:notes_dir
 endfunction
 command! Notes :call Notes()
-nnoremap <leader>n :Notes<cr>
+nnoremap <leader>N :Notes<cr>

@@ -1,25 +1,29 @@
-#define base00 #041523
-#define base01 #122339
-#define base02 #003552
-#define base03 #7a5759
-#define base04 #6b6977
-#define base05 #5b778c
-#define base06 #333238
-#define base07 #214d68
-#define base08 #818591
-#define base09 #9198a3
-#define base0A #adb4b9
-#define base0B #977d7c
-#define base0C #977d7c
-#define base0D #977d7c
-#define base0E #9198a3
-#define base0F #977d7c
+! Base16 Default Light
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #f8f8f8
+#define base01 #e8e8e8
+#define base02 #d8d8d8
+#define base03 #b8b8b8
+#define base04 #585858
+#define base05 #383838
+#define base06 #282828
+#define base07 #181818
+#define base08 #ab4642
+#define base09 #dc9656
+#define base0A #f7ca88
+#define base0B #a1b56c
+#define base0C #86c1b9
+#define base0D #7cafc2
+#define base0E #ba8baf
+#define base0F #a16946
 
 *foreground:   base05
 #ifdef background_opacity
 *background:   [background_opacity]base00
 #else
 *background:   base00
+*backgorund_dark:   #181818
 #endif
 *cursorColor:  base05
 *i3wm_00:       base00

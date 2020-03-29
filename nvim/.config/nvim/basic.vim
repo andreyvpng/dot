@@ -9,8 +9,8 @@ set history=500
 set autoread
 " Ignore compiled files
 set wildignore=*.o,*.pyc,*/.git
-"
 "set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:$,precedes:«,extends:»
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
 set list
 
 " Search
@@ -179,7 +179,7 @@ endfunction
 " => General mapping
 """""""""""""""""""""""""""""
 
-let mapleader = "\\"
+let mapleader = " "
 
 " source vimrc
 nnoremap <leader>vs :source ~/.config/nvim/init.vim<cr>
@@ -263,8 +263,12 @@ map <silent> <C-l> :call WinMove('l')<CR>
 
 " Always show the status line
 set laststatus=2
-
-set statusline=\ %f\ %*\ %m%=\ %y\ %*
+set statusline=\ %f             " file name
+set statusline+=\%=             " align left
+set statusline+=%l              " current line
+set statusline+=/               " separator
+set statusline+=%L              " total lines
+set statusline+=\ \%y           " type of file
 
 
 """""""""""""""""""""""""""""

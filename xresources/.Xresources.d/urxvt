@@ -1,20 +1,17 @@
-URxvt.depth:                      32
-urxvt*depth: 32
-!urxvt*background: rgba:0004/0021/0035/c800
-URxvt.background: [85]#041523
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
-URxvt*background:                 base00
+URxvt*background:                 #181818
 URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
+URxvt.internalBorder:             20
 
-!*font: xft:DejaVu Sans Mono:size=12
+! *font: xft:DejaVu Sans Mono:size=12
 
-URxvt*.font: xft:Iosevka:style=Regular:size=11
-URxvt*.boldFont: xft:Iosevka:style=Bold:size=11
-URxvt*.italicFont: xft:Iosevka:style=Italic:size=11
-URxvt*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=11
+URxvt*.font: xft:Hack:style=Regular:size=10
+URxvt*.boldFont: xft:Hack:style=Bold:size=10
+URxvt*.italicFont: xft:Hack:style=Italic:size=10
+URxvt*.boldItalicFont: xft:Hack:style=Bold Italic:size=10
 
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                   false
@@ -28,6 +25,5 @@ URxvt.keysym.Control-Up:          \033[1;5A
 URxvt.keysym.Shift-Control-Up:    \033[1;6A
 URxvt.keysym.Control-Down:        \033[1;5B
 URxvt.keysym.Shift-Control-Down:  \033[1;6B
-URxvt.internalBorder:             10
 
 URxvt.termName: xterm-256color

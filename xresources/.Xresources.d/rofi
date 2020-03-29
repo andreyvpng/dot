@@ -3,9 +3,9 @@ rofi.color-enabled:     true
 !                       'background', 'border'
 rofi.color-window:      argb:dc111111, argb:dc111111
 ! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
-rofi.color-normal:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ff7a5759
-rofi.color-urgent:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ff7a5759
-rofi.color-active:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ff7a5759
+rofi.color-normal:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:fff7ca88
+rofi.color-urgent:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:fff7ca88
+rofi.color-active:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:fff7ca88
 rofi.separator-style:   dash
 rofi.fullscreen:        true
 rofi.padding:           130
