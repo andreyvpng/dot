@@ -16,8 +16,8 @@
   exec --no-startup-id xss-lock -- i3-exit lock
 
 # GAPS
-  gaps inner 14
-  gaps outer 1
+  gaps inner 5
+  gaps outer 5
 
 # Style
   set_from_resource $base00 i3wm_00 #ffffff
@@ -42,35 +42,35 @@
 
   # Basic color configuration using the Base16 variables for windows and borders.
   # Property Name         Border  BG      Text    Indicator Child Border
-  client.focused          $base05 $base0D $base00 $base0D $base0C
-  client.focused_inactive $base01 $base01 $base05 $base03 $base01
-  client.unfocused        $base01 $base00 $base05 $base01 $base01
+  client.focused          $base01 $base01 $base01 $base01 $base01
+  client.focused_inactive $base00 $base00 $base00 $base00 $base00
+  client.unfocused        $base00 $base00 $base00 $base00 $base00
   client.urgent           $base08 $base08 $base00 $base08 $base08
   client.placeholder      $base00 $base00 $base05 $base00 $base00
   client.background       $base07
 
   for_window [class="^.*"] border pixel 0
-  for_window [tiling] border pixel 10
+  for_window [tiling] border pixel 7
 
 # Bar
   bar {
     status_command          i3blocks -c $HOME/.config/i3/blocks.conf
-    i3bar_command i3bar --transparency
-    position                bottom
+    i3bar_command i3bar     --transparency
+    position                top
     wheel_up_cmd            nop
     wheel_down_cmd          nop
 
     colors {
-        background $transparent
-        separator  $base01
-        statusline $base01
+      background $transparent
+      separator  $base01
+      statusline $base04
 
-        # State             Border  BG      Text
-        focused_workspace   $base0D $transparent $base0D
-        active_workspace    $base0A $transparent $base03
-        inactive_workspace  $base0A $transparent $base01
-        urgent_workspace    $base0A $transparent $base08
-        binding_mode        $base0A $transpatent $base01
+      # State             Border  BG      Text
+      focused_workspace   $base04 $transparent $base04
+      active_workspace    $base03 $transparent $base01
+      inactive_workspace  $base03 $transparent $base03
+      urgent_workspace    $base08 $transparent $base08
+      binding_mode        $base04 $transparent $base04
     }
   }
 
@@ -214,7 +214,7 @@
   bindsym $mod+b exec qutebrowser
   bindsym $mod+m exec qutebrowser --target window m.vk.com/audio
   bindsym $mod+t exec --no-startup-id urxvt -e ranger
-  bindsym --release $alt+p exec maim ~/Documents/Pictures/$(date +%s).png
+  bindsym --release $alt+p exec maim ~/screenshots/$(date +%s).png
   bindsym $mod+n exec urxvt -e nvim -c ":Notes"
 
 # Volume Control
