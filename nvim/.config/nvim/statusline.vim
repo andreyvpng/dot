@@ -23,6 +23,14 @@ let g:currentmode={
   \'t' : 'Terminal '
   \}
 
+let g:backgroundmode= {
+  \'n': '002',
+  \'i': '003',
+  \'v': '004',
+  \'V': '004',
+  \'^V': '004'
+  \}
+
 " Get current mode
 function! ModeCurrent() abort
   let l:modecurrent = mode()
@@ -30,6 +38,13 @@ function! ModeCurrent() abort
   let l:current_status_mode = l:modelist
   return l:current_status_mode
 endfunction
+
+function! UpdateStatusLineColors()
+  let l:modecurrent = mode()
+  let l:color = toupper(get(g:backgroundmode, l:modecurrent, '008'))
+  hi StatusLineMode ctermbg=002 ctermfg=000
+  exec "hi StatusLineMode ctermbg=" . l:color . " ctermfg=000"
+endfunctio
 
 " Get current git branch
 function! GitBranch(git)
@@ -60,8 +75,11 @@ endfunction
 
 " Set active statusline
 function! ActiveLine()
+  call UpdateStatusLineColors()
   " Set empty statusline and colors
   let statusline = ""
+
+  let statusline .= "%#StatusLineMode#"
 
   " Current mode
   let statusline .= " %{ModeCurrent()}"
@@ -69,8 +87,9 @@ function! ActiveLine()
   let statusline .= "%#StatusLineNC#"
 
   " Current git branch
-  let statusline .= " %{GitBranch(fugitive#head())} %)"
-
+  if &rtp =~ 'vim-fugitive'
+    let statusline .= " %{GitBranch(fugitive#head())} %)"
+  endif
 
   " Align items to right
   let statusline .= "%="
@@ -104,7 +123,7 @@ augroup Statusline
   autocmd!
   autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine()
   autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine()
-  autocmd FileType nerdtree setlocal statusline=%!NERDLine()
+  autocmd FileType nerdtree setlocal statusline=" "
 augroup END
 
 
