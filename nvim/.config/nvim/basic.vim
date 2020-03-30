@@ -10,7 +10,7 @@ set autoread
 " Ignore compiled files
 set wildignore=*.o,*.pyc,*/.git
 "set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:$,precedes:«,extends:»
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,precedes:«,extends:»
+set listchars=tab:→\ ,nbsp:␣,trail:•,precedes:«,extends:»
 set list
 
 " Search
