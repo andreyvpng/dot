@@ -95,16 +95,16 @@ function! ActiveLine()
   let statusline .= "%="
 
   " Current modified status and filename
-  let statusline .= "%{CheckMod(&modified)} "
+  let statusline .= " %{CheckMod(&modified)}"
 
   " encoding
   let statusline.="  %{''.(&fenc!=''?&fenc:&enc).''}"
   " file format
-  let statusline.="  (%{&ff})"
+  let statusline.="(%{&ff})"
   " file type
-  let statusline .= "%{CheckFT(&filetype)} "
+  let statusline .= "  %{CheckFT(&filetype)}"
   " current line / total line, file percent"
-  let statusline.="  %02l/%L\ %3p%%"
+  let statusline.="  %02l/%L\ %3p%% "
   return statusline
 endfunction
 
