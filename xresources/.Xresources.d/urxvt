@@ -1,7 +1,7 @@
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
-URxvt*background:                 #181818
+URxvt*background:                 #1d2021
 URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 URxvt.internalBorder:             20
