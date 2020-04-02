@@ -80,7 +80,6 @@ set background=dark
 set t_Co=256
 let base16colorspace=256
 
-
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 

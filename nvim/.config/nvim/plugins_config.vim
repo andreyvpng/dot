@@ -4,9 +4,11 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Color
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 Plug 'mhinz/vim-startify'
 
 " Organize
@@ -46,9 +48,36 @@ nnoremap <leader>plc :PlugClean<cr>
 " => Colorscheme
 """"""""""""""""""""""""""""""
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-"colorscheme base16-solarized-dark
+function! g:BG_none(group)
+  exec "hi " . a:group . " guibg=NONE ctermbg=NONE"
+endfunction
 
+function! s:base16_customize() abort
+  call BG_none("Normal")
+
+  call BG_none("LineNr")
+  call BG_none("CursorColumn")
+
+  call BG_none("CursorColumn")
+  call BG_none("CursorLine")
+  call BG_none("CursorLineNr")
+  call BG_none("SightColumn")
+
+  call BG_none("NonText")
+
+  call BG_none("TabLine")
+  call BG_none("TabLineFill")
+
+  call BG_none("VertSplit")
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
+
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-gruvbox-dark-hard
 
 """"""""""""""""""""""""""""""
 " => NERDTree
@@ -77,6 +106,24 @@ map s <Plug>(easymotion-overwin-f)
 map s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+
+""""""""""""""""""""""""""""""
+" => fzf
+""""""""""""""""""""""""""""""
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using Vim function
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 
 """"""""""""""""""""""""""""""

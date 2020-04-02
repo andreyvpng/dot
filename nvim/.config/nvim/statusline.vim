@@ -1,5 +1,3 @@
-hi Base guibg=none guifg=none ctermbg=none ctermfg=none
-
 " Get current mode
 let g:currentmode={
   \'n' : 'Normal ',
@@ -42,7 +40,6 @@ endfunction
 function! UpdateStatusLineColors()
   let l:modecurrent = mode()
   let l:color = toupper(get(g:backgroundmode, l:modecurrent, '008'))
-  hi StatusLineMode ctermbg=002 ctermfg=000
   exec "hi StatusLineMode ctermbg=" . l:color . " ctermfg=000"
 endfunctio
 
@@ -67,15 +64,16 @@ endfunction
 " Check modified status
 function! CheckMod(modi)
   if a:modi == 1
-    return expand('%:t').'*'
+    return '*'
   else
-    return expand('%:t')
+    return ''
   endif
 endfunction
 
 " Set active statusline
 function! ActiveLine()
   call UpdateStatusLineColors()
+
   " Set empty statusline and colors
   let statusline = ""
 
@@ -94,17 +92,20 @@ function! ActiveLine()
   " Align items to right
   let statusline .= "%="
 
+  let statusline .= "%f"
   " Current modified status and filename
-  let statusline .= " %{CheckMod(&modified)}"
+  let statusline .= " %{CheckMod(&modified)}%#StatusLineNC#"
 
   " encoding
   let statusline.="  %{''.(&fenc!=''?&fenc:&enc).''}"
   " file format
   let statusline.="(%{&ff})"
   " file type
-  let statusline .= "  %{CheckFT(&filetype)}"
+  let statusline .= "  %{CheckFT(&filetype)}  "
+
+  let statusline .= "%#StatusLineMode#"
   " current line / total line, file percent"
-  let statusline.="  %02l/%L\ %3p%% "
+  let statusline.=" %02l/%L\ %3p%% "
   return statusline
 endfunction
 
@@ -125,8 +126,3 @@ augroup Statusline
   autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine()
   autocmd FileType nerdtree setlocal statusline=" "
 augroup END
-
-
-"set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
-"set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
-"set statusline+=%=                                       " Right Side
