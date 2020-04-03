@@ -6,7 +6,7 @@ URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 URxvt.internalBorder:             20
 
-! *font: xft:DejaVu Sans Mono:size=12
+*font: xft:Iosevka:size=12
 
 URxvt*.font: xft:Iosevka:style=Regular:size=12
 URxvt*.boldFont: xft:Iosevka:style=Bold:size=12
