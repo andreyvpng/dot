@@ -67,9 +67,6 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЙ
 
 syntax on
 
-" override color scheme to make vertical separator fit
-"autocmd ColorScheme * hi VertSplit ctermbg=NONE guibg=NONE
-
 "set split separator
 set fillchars+=vert:│
 
@@ -139,6 +136,8 @@ nnoremap <leader>W :set wrap!<cr>
 
 " toggle number
 nnoremap <leader>N :set number!<cr>
+
+imap jj <Esc>
 
 
 """""""""""""""""""""""""""""

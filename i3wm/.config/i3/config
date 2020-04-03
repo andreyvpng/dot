@@ -12,6 +12,7 @@
   exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
   exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
   exec_always --no-startup-id udiskie
+  exec --no-startup-id dunst
   exec --no-startup-id picom --config ~/.picom.conf
   exec --no-startup-id redshift
   exec --no-startup-id xss-lock -- i3-exit lock
@@ -55,7 +56,7 @@
 
 # Bar
   bar {
-    font pango:DejaVu Sans Mono, Awesome 10
+    font pango:Iosevka, Awesome 10
     status_command          i3blocks -c $HOME/.config/i3/blocks.conf
     i3bar_command i3bar     --transparency
     separator_symbol "  "
@@ -107,6 +108,7 @@
   bindsym $mod+6 workspace $ws6
   bindsym $mod+7 workspace $ws7
   bindsym $mod+8 workspace $ws8
+  bindsym $mod+Tab workspace back_and_forth 
 
   # move focused container to workspace
   bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
