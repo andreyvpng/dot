@@ -14,6 +14,9 @@ Plug 'mhinz/vim-startify'
 " Organize
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
+Plug 'itchyny/calendar.vim'
+Plug 'ryot4/diary.vim'
+
 
 " HTML
 Plug 'mattn/emmet-vim'
@@ -32,6 +35,7 @@ Plug 'udalov/kotlin-vim'
 
 " Other
 Plug 'tpope/vim-surround'
+Plug 'lyokha/vim-xkbswitch'
 
 " install curl, mpv
 Plug 'soywod/phonetics.vim'
@@ -83,7 +87,7 @@ colorscheme base16-gruvbox-dark-hard
 " => NERDTree
 """"""""""""""""""""""""""""""
 
-noremap <leader>n :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
@@ -104,8 +108,6 @@ let g:EasyMotion_smartcase = 1
 
 map s <Plug>(easymotion-overwin-f)
 map s <Plug>(easymotion-overwin-f2)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 
 
 """"""""""""""""""""""""""""""
@@ -124,6 +126,15 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using Vim function
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+nunmap <leader>bb
+nnoremap <leader>bb :Buffers<CR>
+
+
+""""""""""""""""""""""""""""""
+" => Org
+""""""""""""""""""""""""""""""
+let g:org_agenda_files=['~/org/index.org', '~/org/qwe.org']
 
 
 """"""""""""""""""""""""""""""
@@ -195,4 +206,10 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
-let g:cssColorVimDoNotMessMyUpdatetime = 1
+
+""""""""""""""""""""""""""""""
+" => xkb
+""""""""""""""""""""""""""""""
+
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchIMappings = ['ru']

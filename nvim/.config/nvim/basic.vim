@@ -75,7 +75,7 @@ set background=dark
 
 "set termguicolors
 set t_Co=256
-let base16colorspace=256
+"let base16colorspace=256
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -107,18 +107,16 @@ set guitablabel=%N/\ %t\ %M
 """""""""""""""""""""""""""""
 
 let mapleader = " "
+let maplocalleader = "\\"
 
-" source vimrc
+" vimrc
 nnoremap <leader>vs :source ~/.config/nvim/init.vim<cr>
-
-" open vimrc
+nnoremap <leader>ve :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>vo :e ~/.config/nvim/init.vim<cr>
 
-" Fast saving
+" save & quit
 nnoremap <leader>w :w!<cr>
-" Fast quit
 nnoremap <leader>q :q<cr>
-" Fast quit all windows
 nnoremap <leader>Q :qall<cr>
 
 " Fix common typos
@@ -137,6 +135,7 @@ nnoremap <leader>W :set wrap!<cr>
 " toggle number
 nnoremap <leader>N :set number!<cr>
 
+" exit insert mode
 imap jj <Esc>
 
 
@@ -154,27 +153,18 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 map <leader>bd :bdelete<cr>
 
 " switch between buffers
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+map <leader>bl :bnext<cr>
+map <leader>bh :bprevious<cr>
 
 " switch buffers
 nnoremap <leader>bb :buffers<CR>:buffer<Space>
 
+" only one buffer
+nnoremap <leader>bo :only<CR>
+
 " mapping for tabs
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
-
-" switch tabs
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>6 6gt
-nnoremap <leader>7 7gt
-nnoremap <leader>8 8gt
-nnoremap <leader>9 9gt
-nnoremap <leader>0 0gt
 
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr><cr>

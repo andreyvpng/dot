@@ -9,7 +9,7 @@ function! Notes()
         let notes_dir = '~/storage/shared/notes'
     endif
     exec 'lcd' l:notes_dir
-    exec 'CtrlP' l:notes_dir
+    exec 'Files' l:notes_dir
 endfunction
 command! Notes :call Notes()
-nnoremap <leader>N :Notes<cr>
+nnoremap <leader>n :Notes<cr>
