@@ -16,8 +16,8 @@
   exec --no-startup-id xss-lock -- i3-exit lock
 
 # GAPS
-  gaps inner 5
-  gaps outer 5
+  #gaps inner 5
+  #gaps outer 5
 
 # Style
   set_from_resource $base00 i3wm_00 #ffffff
@@ -52,6 +52,8 @@
   for_window [class="^.*"] border pixel 0
   for_window [tiling] border pixel 7
 
+  hide_edge_borders both
+
 # Bar
   bar {
     font pango:Iosevka, Awesome 11
@@ -60,6 +62,10 @@
     position                bottom
     wheel_up_cmd            nop
     wheel_down_cmd          nop
+
+    mode hide
+    hidden_state hide
+    modifier $mod
 
     colors {
       background $base00
