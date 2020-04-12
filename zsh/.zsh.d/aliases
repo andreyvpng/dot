@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ############
 # general
@@ -12,6 +12,23 @@ alias r="ranger"
 alias n="nvim"
 alias vim="nvim"
 alias dm="dotmanager"
+alias x="startx"
+
+alias sp="sudo pacman"
+alias spI="sudo pacman -S"
+alias spR="sudo pacman -Rsc"
+alias spU="sudo pacman -Syu"
+
+alias sy="systemctl"
+alias ssy="sudo systemctl"
+
+
+############
+# configs
+############
+
+alias i3config="nvim ~/.config/i3/config"
+alias nvimconfig="nvim ~/.config/nvim/init.vim"
 
 ############
 # ls, cd

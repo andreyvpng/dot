@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ex() {
   if [ -f $1 ] ; then
