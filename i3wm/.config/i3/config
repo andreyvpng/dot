@@ -8,8 +8,6 @@
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id nm-applet
   exec --no-startup-id xfce4-power-manager
-  # TODO write script for detect and run when connected new keyboard
-  exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle
   exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
   exec_always --no-startup-id udiskie
   exec --no-startup-id dunst
@@ -56,9 +54,8 @@
 
 # Bar
   bar {
-    font pango:Iosevka, Awesome 10
+    font pango:Iosevka, Awesome 11
     status_command          i3blocks -c $HOME/.config/i3/blocks.conf
-    i3bar_command i3bar     --transparency
     separator_symbol "  "
     position                bottom
     wheel_up_cmd            nop
@@ -221,6 +218,10 @@
   bindsym $mod+t exec --no-startup-id urxvt -e ranger
   bindsym --release $alt+p exec maim ~/screenshots/$(date +%s).png
   bindsym $mod+n exec urxvt -e nvim -c ":Notes"
+
+# Brightness
+  bindsym $mod+bracketleft exec xbacklight -dec 10
+  bindsym $mod+bracketright exec xbacklight -inc 10
 
 # Volume Control
   bindsym $mod+period exec amixer set Master 5%+ unmute  && pkill -SIGRTMIN+10 i3blocks
