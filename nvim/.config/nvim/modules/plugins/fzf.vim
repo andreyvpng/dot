@@ -17,7 +17,6 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 nnoremap <leader>bb :Buffers<CR>
 
 function! FZF_EXPLORE(dir)
-  "let dotfiles_dir = '~/github/dot'
   exec 'lcd' a:dir
   exec 'Files' a:dir
 endfunction
