@@ -1,5 +1,7 @@
-source ~/.config/nvim/basic.vim
-source ~/.config/nvim/tabline.vim
-source ~/.config/nvim/statusline.vim
-source ~/.config/nvim/plugins_config.vim
-source ~/.config/nvim/extended.vim
+function! Dot(path)
+  return '~/.config/nvim/' . a:path
+endfunction
+
+for file in split(glob(Dot('modules/*.vim')), '\n')
+  execute 'source' file
+endfor
