@@ -22,6 +22,7 @@ alias spU="sudo pacman -Syu"
 alias sy="systemctl"
 alias ssy="sudo systemctl"
 
+alias wal="wal -o $HOME/.config/wal/done.sh"
 
 ############
 # configs

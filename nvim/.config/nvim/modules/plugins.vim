@@ -18,7 +18,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " colors
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
+Plug 'dylanaraps/wal.vim'
 
 " vim start buffer
 Plug 'mhinz/vim-startify'

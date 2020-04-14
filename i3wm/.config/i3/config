@@ -5,13 +5,13 @@
 
 # Startup
   exec --no-startup-id amixer -q -D pulse set Master mute
-  exec --no-startup-id nitrogen --restore
+  #exec --no-startup-id nitrogen --restore
   exec --no-startup-id nm-applet
   exec --no-startup-id xfce4-power-manager
   exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
   exec_always --no-startup-id udiskie
   exec --no-startup-id dunst
-  exec --no-startup-id picom --config ~/.picom.conf
+  #exec --no-startup-id picom --config ~/.picom.conf
   exec --no-startup-id redshift
   exec --no-startup-id xss-lock -- i3-exit lock
 
@@ -20,34 +20,20 @@
   #gaps outer 5
 
 # Style
-  set_from_resource $base00 i3wm_00 #ffffff
-  set_from_resource $base01 i3wm_01 #ffffff
-  set_from_resource $base02 i3wm_02 #ffffff
-  set_from_resource $base03 i3wm_03 #ffffff
-  set_from_resource $base04 i3wm_04 #ffffff
-  set_from_resource $base05 i3wm_05 #ffffff
-  set_from_resource $base06 i3wm_06 #ffffff
-  set_from_resource $base07 i3wm_07 #ffffff
-  set_from_resource $base08 i3wm_08 #ffffff
-  set_from_resource $base09 i3wm_09 #ffffff
-  set_from_resource $base0A i3wm_0A #ffffff
-  set_from_resource $base0B i3wm_0B #ffffff
-  set_from_resource $base0C i3wm_0C #ffffff
-  set_from_resource $base0D i3wm_0D #ffffff
-  set_from_resource $base0E i3wm_0E #ffffff
-  set_from_resource $base0F i3wm_0F #ffffff
+  set_from_resource $fg i3wm.color7 #ffffff
+  set_from_resource $bg i3wm.color0 #ffffff
 
-  #                 RRGGBBAA
-  set $transparent #00000000
+  set_from_resource $urgent i3wm.color1 #ffffff
+  set_from_resource $selected i3wm.color2 #ffffff
 
   # Basic color configuration using the Base16 variables for windows and borders.
-  # Property Name         Border  BG      Text    Indicator Child Border
-  client.focused          $base00 $base00 $base04 $base00 $base00
-  client.focused_inactive $base03 $base03 $base04 $base03 $base03
-  client.unfocused        $base03 $base03 $base04 $base03 $base03
-  client.urgent           $base08 $base08 $base04 $base08 $base08
-  client.placeholder      $base00 $base00 $base04 $base00 $base00
-  client.background       $base07
+  # Property Name         Border          BG      Text          Indicator Child Bor
+  client.focused           $bg            $selected $bg $bg       $selected
+  client.focused_inactive  $bg            $bg       $fg         $bg       $bg
+  client.unfocused         $bg            $bg       $fg         $bg       $bg
+  client.urgent            $bg            $bg       $urgent     $bg       $bg
+  client.placeholder       $bg            $bg       $fg         $bg       $bg
+  client.background        $bg
 
   for_window [class="^.*"] border pixel 0
   for_window [tiling] border pixel 7
@@ -63,23 +49,21 @@
     wheel_up_cmd            nop
     wheel_down_cmd          nop
 
-    mode hide
-    hidden_state hide
-    modifier $mod
-
     colors {
-      background $base00
-      separator  $base04
-      statusline $base04
+      background $bg
+      separator  $fg
+      statusline $fg
 
-      # State             Border  BG      Text
-      focused_workspace   $base00 $base00 $base04
-      active_workspace    $base00 $base00 $base01
-      inactive_workspace  $base00 $base00 $base03
-      urgent_workspace    $base00 $base00 $base08
-      binding_mode        $base00 $base00 $base04
+      # State             Border      BG          Text
+      focused_workspace   $bg $bg  $selected
+      active_workspace    $bg $bg  $fg
+      inactive_workspace  $bg $bg  $fg
+      urgent_workspace    $bg $bg  $urgent
+      binding_mode        $bg $bg  $fg
     }
   }
+  # hide/unhide i3status bar
+  bindsym $mod+m bar mode toggle
 
 # Restart
   # reload the configuration file
@@ -220,7 +204,7 @@
   bindsym $mod+d exec rofi -show drun
   bindsym $mod+Return exec urxvt
   bindsym $mod+b exec qutebrowser
-  bindsym $mod+m exec qutebrowser --target window m.vk.com/audio
+  #bindsym $mod+m exec qutebrowser --target window m.vk.com/audio
   bindsym $mod+t exec --no-startup-id urxvt -e ranger
   bindsym --release $alt+p exec maim ~/screenshots/$(date +%s).png
   bindsym $mod+n exec urxvt -e nvim -c ":Notes"
