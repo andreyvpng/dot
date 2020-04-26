@@ -1,19 +1,21 @@
 #!/bin/bash
 
-B='#00000000'  # blank
-C='#00000000'  # clear ish
+source $HOME/.config/just-colors/cache/color-palette.sh
+
+B="${base00}ff"
+C=$B  # clear ish
 
 # ring color
-D="$(i3-get-color i3wm_lock_ring)ff"
+D=$B
 
 # text
-T="$(i3-get-color i3wm_lock_text)ff"
+T="${base06}ff"
 
 # wrong
-W="$(i3-get-color i3wm_lock_wrong)ff"
+W="${base08}ff"
 
 # verifying
-V="$(i3-get-color i3wm_lock_verifying)ff"
+V="${base01}ff"
 
 i3lock \
 --insidevercolor=$C   \
@@ -34,10 +36,14 @@ i3lock \
 --layoutcolor=$T      \
 --keyhlcolor=$W       \
 --bshlcolor=$W        \
---screen 1            \
+--screen 4            \
 --blur 9              \
 --clock               \
 --indicator           \
+\
 --timestr="%H:%M"  \
---datestr=""
-#--keylayout 2         \
+--datestr="" \
+\
+--veriftext="Wait..." \
+--wrongtext="Nope!" \
+--noinputtext="None"
