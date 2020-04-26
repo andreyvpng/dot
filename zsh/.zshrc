@@ -26,11 +26,13 @@ if [ -d ~/.zsh.d ]; then
     done
 fi
 
-############
-# pywal
-############
+#############
+# just-colors
+#############
 
-(cat ~/.cache/wal/sequences &)
+JUST_COLORS_PATH=$HOME/.config/just-colors
+[[ -f $JUST_COLORS_PATH/cache/tty.sh ]] &&
+  ($JUST_COLORS_PATH/cache/tty.sh)
 
 # ###########
 # taskwarrior
