@@ -41,7 +41,7 @@ function! UpdateStatusLineColors()
   let l:modecurrent = mode()
   let l:color = toupper(get(g:backgroundmode, l:modecurrent, '008'))
   exec "hi StatusLineMode ctermbg=" . l:color . " ctermfg=000"
-endfunctio
+endfunction
 
 " Get current git branch
 function! GitBranch(git)
