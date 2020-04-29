@@ -10,6 +10,9 @@ call plug#begin('~/.config/nvim/plugged')
 " file tree
 Plug 'scrooloose/nerdtree'
 
+" icons
+Plug 'ryanoasis/vim-devicons'
+
 " easy motion
 Plug 'easymotion/vim-easymotion'
 
