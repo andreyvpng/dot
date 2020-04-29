@@ -1,8 +1,26 @@
 #!/bin/bash
-info=$(amixer sget Master | grep 'Right' | awk -F'[][]' '{ print $4; print $2 }')
-is_mute=$( echo $info | awk -F' ' '{ print $1 }')
-volume=$( echo $info | awk -F' ' '{ print $2 }')
 
-if [ $is_mute = "off" ]; then
-  echo 
-fi
+get_info_about_channel() {
+  channel=$1
+  echo $(amixer sget $channel \
+    | grep 'Right' \
+    | awk -F'[][]' '{ print $4; print $2 }')
+}
+
+is_mute() {
+  info=$1
+  echo $(echo $info \
+    | awk -F' ' '{ print $1 }')
+}
+
+is_mute_channel() {
+  channel=$1
+  info=$(get_info_about_channel $channel)
+  is_mute $info
+}
+
+[ $(is_mute_channel "Capture") = "off" ] && 
+  echo -n "  "
+[ $(is_mute_channel "Master")  = "off" ] &&
+  echo -n "  "
+echo

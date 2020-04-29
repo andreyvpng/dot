@@ -1,19 +1,26 @@
+# i3 config file (v4)
+
 # General
   font pango:Roboto 10
   set $mod Mod4
   set $alt Mod1
 
 # Startup
-  exec --no-startup-id amixer -q -D pulse set Master mute
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id nm-applet
   exec --no-startup-id xfce4-power-manager
-  exec --no-startup-id killall -6 pulseaudio && pulseaudio --start
+  exec --no-startup-id killall -6 pulseaudio && \
+                       pulseaudio --start && \
+                       pasystray
+  exec --no-startup-id amixer -q -D pulse set Master mute
+  exec --no-startup-id amixer -q -D pulse set Capture mute
   exec_always --no-startup-id udiskie
   exec --no-startup-id dunst
   exec --no-startup-id picom --config ~/.picom.conf
   exec --no-startup-id redshift
   exec --no-startup-id xss-lock -- i3-exit lock
+  exec --no-startup-id /usr/lib/kdeconnectd
+  exec --no-startup-id kdeconnect-indicator
 
 # GAPS
   #gaps inner 5
@@ -35,8 +42,8 @@
   client.placeholder       $bg            $bg       $fg         $bg       $bg
   client.background        $bg
 
-  for_window [class="^.*"] border pixel 0
-  for_window [tiling] border pixel 7
+  #for_window [class="^.*"] border pixel 0
+  #for_window [tiling] border pixel 7
 
   hide_edge_borders both
 
@@ -63,7 +70,7 @@
     }
   }
   # hide/unhide i3status bar
-  bindsym $mod+m bar mode toggle
+  #bindsym $mod+m bar mode toggle
 
 # Restart
   # reload the configuration file
@@ -198,15 +205,14 @@
   bindsym $mod+Shift+grave move scratchpad
   bindsym $mod+grave scratchpad show
 
-
 # Runner
   #bindsym $mod+d exec i3-runner
   bindsym $mod+d exec rofi -show drun
   bindsym $mod+Return exec urxvt
   bindsym $mod+b exec qutebrowser
-  #bindsym $mod+m exec qutebrowser --target window m.vk.com/audio
   bindsym $mod+t exec --no-startup-id urxvt -e ranger
-  bindsym --release $mod+p exec maim ~/screenshots/$(date +%s).png
+  bindsym --release $mod+p exec mkdir -p ~/screenshots && \
+                                maim ~/screenshots/$(date +%s).png
   bindsym $mod+n exec urxvt -e nvim -c ":Notes"
 
 # Brightness
@@ -217,3 +223,4 @@
   bindsym $mod+period exec amixer set Master 5%+ unmute  && pkill -SIGRTMIN+10 i3blocks
   bindsym $mod+comma exec amixer set Master 5%- unmute  && pkill -SIGRTMIN+10 i3blocks
   bindsym $mod+slash exec amixer -q -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks
+  bindsym $mod+m exec amixer -q -D pulse set Capture toggle && pkill -SIGRTMIN+10 i3blocks
