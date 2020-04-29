@@ -96,6 +96,10 @@ function! ActiveLine()
   " Current modified status and filename
   let statusline .= " %{CheckMod(&modified)}%#StatusLineNC#"
 
+  if &rtp =~ 'vim-devicons'
+    let statusline .= "%{WebDevIconsGetFileTypeSymbol()}"
+  endif
+
   " encoding
   let statusline.="  %{''.(&fenc!=''?&fenc:&enc).''}"
   " file format
