@@ -93,7 +93,7 @@ if os.path.isfile(colors_absolute):
     #   - hsv: Interpolate in the HSV color system.
     #   - hsl: Interpolate in the HSL color system.
     #   - none: Don't show a gradient.
-    c.colors.downloads.system.bg = 'none'
+    c.colors.downloads.system.bg = 'rgb'
 
     # Background color for hints. Note that you can use a `rgba(...)` value
     # for transparency.
