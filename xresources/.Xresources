@@ -1,5 +1,3 @@
-*font: xft:Roboto:size=14
-
 !
 ! URXVT
 !
@@ -11,10 +9,10 @@ URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 URxvt.internalBorder:             20
 
-URxvt*.font: xft:JetBrains Mono:style=Regular:size=13
-URxvt*.boldFont: xft:JetBrains Mono:style=Bold:size=13
-URxvt*.italicFont: xft:JetBrains Mono:style=Italic:size=13
-URxvt*.boldItalicFont: xft:JetBrains Mono:style=Bold Italic:size=13
+URxvt*.font: xft:JetBrains Mono Nerd Font:style=Regular:size=13
+URxvt*.boldFont: xft:JetBrains Mono Nerd Font:style=Bold:size=13
+URxvt*.italicFont: xft:JetBrains Mono Nerd Font:style=Italic:size=13
+URxvt*.boldItalicFont: xft:JetBrains Mono Nerd Font:style=Bold Italic:size=13
 
 ! Normal copy-paste keybindings without perls
 URxvt.iso14755:                   false
